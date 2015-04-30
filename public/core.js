@@ -26,7 +26,7 @@ function mainController($scope, $http) {
     };
 
     $scope.deleteTodo = function(id) {
-        $http.delete('/app/todos/' + id)
+        $http.delete('/api/todos/' + id)
             .success(function(data) {
                 $scope.todos = data;
                 console.log(data);

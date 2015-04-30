@@ -24,7 +24,7 @@ app.use(methodOverride());
 
 // define model ==================
 var Todo = mongoose.model('todo', {
-    test : String
+    text : String
 });
 
 
@@ -41,14 +41,14 @@ var Todo = mongoose.model('todo', {
       if (err)
         res.send(err);
 
-      res.josn(todos);  //return all todos in JSON format
+      res.json(todos);  //return all todos in JSON format
     });
   });
 
   app.post('/api/todos', function(req, res){
 
     Todo.create({
-      text : req.body.test,
+      text : req.body.text,
       done : false
     }, function(err, todo) {
         if(err)
@@ -63,7 +63,7 @@ var Todo = mongoose.model('todo', {
     });
   });
 
-  app.delete('/api/todos/:todo_id', function(req, res){
+  app.delete('/api/todos/:todo_id', function(req, res) {
     Todo.remove({
         _id : req.params.todo_id
     }, function(err, todo) {
