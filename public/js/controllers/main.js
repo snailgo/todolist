@@ -24,7 +24,7 @@ angular.module('todoController', [])
 
             if (!$.isEmptyObject($scope.formData)){
 
-                Todos.create()
+                Todos.create($scope.formData)
                         .success(function(data) {
                             $scope.formData = {};
                             $scope.todos = data;
@@ -39,12 +39,9 @@ angular.module('todoController', [])
 
         // delete a todo after checking it
         $scope.deleteTodo = function(id) {
-                Todos.delete()
+                Todos.delete(id)
                         .success(function(data) {
                                 $scope.todos = data;
-                        })
-                        .error(function(data) {
-                                console.log('Error: ' + data);
                         });
         };
     });
